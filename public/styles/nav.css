@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+}
+
+nav {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  top: 0;
+  left: 0;
+  height: 120px;
+  width: 100%;
+  z-index: 2;
+  background-color: #4056A1;
+  color: #FFF;
+}
+
+
+nav #brand {
+  font-family: 'Bungee', cursive;
+  font-size: 1.2em;
+  padding: 1.5em;
+}
+
+nav #tweet {
+  font-size: 1.2em;
+  padding: 1.5em;
+}
+
+#bolded {
+  font-weight: 700;
+}
