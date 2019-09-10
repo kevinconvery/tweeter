@@ -7,6 +7,9 @@
     <!-- External CSS -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
 
+    <!-- Font Awesome - for icons -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Bungee|Source+Sans+Pro:300,300i,700,700i&display=swap" rel="stylesheet">
 
@@ -15,22 +18,20 @@
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
 
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
 
-    <!-- App JS -->
-    <script type="text/javascript" src="/scripts/app.js"></script>
-    <script type="text/javascript" src="scripts/composer-char-counter.js"></script>
   </head>
-
+  
   <body>
     <!-- Top nav bar (fixed) -->
     <nav id="outer-nav">
       <span id="brand">tweeter</span>
       <span id=tweet><span id=bolded>Write</span> a new tweet</span>
     </nav>
-
+    
     <header>
       <div id="profile-div">
         <img src="/images/profile-hex.png"> 
@@ -39,6 +40,7 @@
     </header>
     <!-- Page-specific (main) content here -->
     <main class="container">
+      <!-- section for adding new tweets -->
       <section class="new-tweet">
         <form>
           <textarea name="text" placeholder="What are you humming about?" id="tweet-text"></textarea>
@@ -48,6 +50,33 @@
           </div>
         </form>
       </section>
+      <article class="tweet">
+        <div class="top-row">
+          <div class="top-left">
+            <img src="images/profile-hex.png" alt="">
+            <span class="display-name">Bob Rogers</span>
+          </div>
+          <div class="top-right">
+            <span class="user-name">@bobrogers</span>
+          </div>
+        </div>
+        <div class="tweet-body">
+          <span class="tweet-text">Tweet Body</span>
+        </div>
+        <div class="bottom-row">
+          <div class="bottom-left">
+            <span class="tweet-age">3 days ago</span>
+          </div>
+          <div class="bottom-right">
+            <i class="fa fa-flag"></i>
+            <i class="fa fa-retweet"></i>
+            <i class="fa fa-heart"></i>
+          </div>
+        </div>
+      </article>
     </main>
   </body>
+  <!-- App JS - moved to bottom as good practice -->
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="scripts/composer-char-counter.js"></script>
 </html>
