@@ -26,10 +26,14 @@ const createTweetElement = function(tweetElement) {
           </article>`;
 }
 
+const appendTweet = function(tweet) {
+  $('#tweets-container').append(createTweetElement(tweet));
+}
+
 const renderTweets = function(tweets) {
   for (tweet of tweets) {
     // append returned HTML string:
-    $('#tweets-container').append(createTweetElement(tweet));
+    appendTweet(tweet);
   }
 }
 
@@ -37,8 +41,8 @@ $(document).ready(function() {
   // create-tweet submit event listener
   // adds a new tweet to the tweets.
   $('#create-tweet').submit(function(event) {
-    // prevent default handling (in this case, the refresh of the page)
     event.preventDefault();
+    // prevent default handling (in this case, the refresh of the page)
     if ($(this) === undefined) {
       alert('error');
     } 
@@ -46,17 +50,16 @@ $(document).ready(function() {
       url: '/tweets',
       method: 'POST',
       data: $(this).serialize()
-    }).then(function() {
-      console.log(response);
+    }).then(function(response) {
+      appendTweet(response);
     });
   });
-
+  
   const loadTweets = function() {
-    const response = $.ajax({
+    $.ajax({
       url: '/tweets',
       method: 'GET'
-    })
-    response.done(function(tweets) {
+    }).then(function(tweets) {
       renderTweets(tweets);
     });
   }
