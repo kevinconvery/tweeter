@@ -43,16 +43,19 @@ $(document).ready(function() {
   $('#create-tweet').submit(function(event) {
     event.preventDefault();
     // prevent default handling (in this case, the refresh of the page)
-    if ($(this) === undefined) {
-      alert('error');
-    } 
-    $.ajax({
-      url: '/tweets',
-      method: 'POST',
-      data: $(this).serialize()
-    }).then(function(response) {
-      appendTweet(response);
-    });
+    if ($('#tweet-text').val() === "") {
+      alert('tweets cannot be empty');
+    } else if ($('#tweet-text').val().length > 140) {
+      alert('tweets can only be 140 characters or less');
+    } else {
+      $.ajax({
+        url: '/tweets',
+        method: 'POST',
+        data: $(this).serialize()
+      }).then(function(response) {
+        appendTweet(response);
+      });
+    }
   });
   
   const loadTweets = function() {
