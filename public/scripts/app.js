@@ -1,4 +1,8 @@
-const createTweetElement = function(tweetElement) {
+const tweetAgeInDays = date => {
+
+}
+
+const createTweetElement = tweetElement => {
   // Returning a large template string is a lot cleaner.
   return `<article class="tweet">
             <div class="top-row">
@@ -15,7 +19,7 @@ const createTweetElement = function(tweetElement) {
             </div>
             <div class="bottom-row">
               <div class="bottom-left">
-                <span class="tweet-age">3 days ago</span>
+                <span class="tweet-age">${new Date(parseInt(tweetElement.created_at))}</span>
               </div>
               <div class="bottom-right">
                 <i class="fa fa-flag"></i>
@@ -26,33 +30,51 @@ const createTweetElement = function(tweetElement) {
           </article>`;
 }
 
-const appendTweet = function(tweet) {
+const appendTweet = tweet => {
   $('#tweets-container').append(createTweetElement(tweet));
 }
 
-const renderTweets = function(tweets) {
+const renderTweets = tweets => {
   for (tweet of tweets) {
     // append returned HTML string:
     appendTweet(tweet);
   }
 }
 
-$(document).ready(function() {
+$(document).ready(() => {
   // create-tweet submit event listener
   // adds a new tweet to the tweets.
-  $('#create-tweet').submit(function(event) {
+  $('#create-tweet').submit((event) => {
     event.preventDefault();
     // prevent default handling (in this case, the refresh of the page)
     if ($('#tweet-text').val() === "") {
-      alert('tweets cannot be empty');
+      // create the error 
+      const errorHTML = 
+        `<div class="error-message">
+          <h1>Error</h1>
+          <p>Tweets cannot be empty</p>
+          <button class="error-kill-button">Kill Me</button>
+         </div>`;
+      $('.container').prepend(errorHTML);
+      $('.error-kill-button').click((event) => {
+        $('div').remove('.error-message');
+      });
     } else if ($('#tweet-text').val().length > 140) {
-      alert('tweets can only be 140 characters or less');
+      const errorHTML = 
+        `<div class="error-message">
+          <h1>Error</h1>
+          <p>Tweets are limited to a length of 140 characters.</p>
+         </div>`;
+      $('.container').prepend(errorHTML);
+      $('.error-kill-button').click((event) => {
+        $('div').remove('.error-message');
+      });
     } else {
       $.ajax({
         url: '/tweets',
         method: 'POST',
         data: $(this).serialize()
-      }).then(function(response) {
+      }).then((response) => {
         $('#tweet-text').val('');
         $('.counter').text('140');
         appendTweet(response);
@@ -67,7 +89,7 @@ $(document).ready(function() {
     $('.new-tweet').slideToggle();
   });
   
-  const loadTweets = function() {
+  const loadTweets = () => {
     $.ajax({
       url: '/tweets',
       method: 'GET'

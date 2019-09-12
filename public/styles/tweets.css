@@ -11,8 +11,14 @@ article.tweet {
   margin-bottom: 1em;
 }
 
-article.tweet i {
+article.tweet .bottom-right {
   opacity: 0;
+  transition: 700ms ease-in-out;
+}
+
+article.tweet .bottom-right:hover {
+  opacity: 1;
+  transition: 700ms ease-in-out;
 }
 
 article.tweet:hover {
@@ -80,4 +86,35 @@ article.tweet:hover {
 .toggle-button i:hover {
   opacity: 1;
   transition: 250ms ease-in-out;
+}
+
+.error-message {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: 3px solid red;
+}
+
+error-message i {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  top: 0;
+  right: 0;
+  background-color: red;
+  color: white;
+}
+
+.error-message h1 {
+  color: red;
+  font-size: 32px;
+}
+
+.error-message p {
+  color: red;
+  font-weight: 700;
+  font-size: 20px;
 }
