@@ -16,7 +16,9 @@ new tweets to the page, with jQuery for our DOM manipulation.
 
 1. There are a few existing "dummy" tweets that will render when the page is started. The compose tweet button is at the upper right of the site; click it to write a new tweet.
 
-!["Page when initially loaded."]
+!["Page when initially loaded."](https://github.com/kevinconvery/tweeter/blob/master/public/docs/initial-site-state.png)
+
+!["Page when compose tweet button clicked to reveal form"](https://github.com/kevinconvery/tweeter/blob/master/public/docs/compose-tweet-shown.png)
 
 2. Tweets have a few constraints; they can't exceed 140 characters in length nor be blank. An error message will alert you if you try and send a tweet in these cases. There is also a counter (mentioned below) that will dynamically show the size of the tweet you're writing.
 
