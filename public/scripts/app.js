@@ -53,9 +53,18 @@ $(document).ready(function() {
         method: 'POST',
         data: $(this).serialize()
       }).then(function(response) {
+        $('#tweet-text').val('');
+        $('.counter').text('140');
         appendTweet(response);
       });
     }
+  });
+  // hide the new tweet form by default
+  $('.new-tweet').slideUp();
+
+  // this will toggle the state
+  $('#compose-tweet').click(function(event) {
+    $('.new-tweet').slideToggle();
   });
   
   const loadTweets = function() {
@@ -66,6 +75,6 @@ $(document).ready(function() {
       renderTweets(tweets);
     });
   }
-
+  
   loadTweets();
 });

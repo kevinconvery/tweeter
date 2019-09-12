@@ -10,11 +10,8 @@ $(document).ready(function() {
       }
     } else {
       // here, don't decrement the counter if it's less than 0:
-      if (counter > 0) {
-        counter--;
-        $('.counter').text(counter);
-      }
-
+      counter--;
+      $('.counter').text(counter);
     }
     
     // we'll toggle the caution here - the caution class will turn on
@@ -22,13 +19,12 @@ $(document).ready(function() {
     // turns the text on to warn the user of the tweet length being at its limit.
     if (counter === 0) {
       $('.counter').addClass('counter-caution');
-    } else {
+    } 
+
+    // remove the class only if the class is present
+    if (counter > 0 && $('.counter').hasClass('counter-caution')) {
       $('.counter').removeClass('counter-caution');
     }
-  });
-  
-  $('#tweet-submit').click(function() {
-    console.log(this);
   });
 });
 

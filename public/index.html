@@ -28,8 +28,13 @@
   <body>
     <!-- Top nav bar (fixed) -->
     <nav id="outer-nav">
-      <span id="brand">tweeter</span>
-      <span id=tweet><span id=bolded>Write</span> a new tweet</span>
+      <div id="nav-left">
+        <span id="brand">tweeter</span>
+      </div>
+      <div id="nav-right">
+        <span id=tweet><span id=bolded>Write</span> a new tweet</span>
+        <i class="fa fa-angle-double-down" id="compose-tweet"></i>
+      </div>
     </nav>
     
     <header>
@@ -51,6 +56,9 @@
         </form>
       </section>
       <section id="tweets-container"></section>
+      <div class="toggle-button">
+        <i class="fa fa-angle-double-up"></i>
+      </div>
     </main>
   </body>
   <!-- App JS - moved to bottom as good practice -->
