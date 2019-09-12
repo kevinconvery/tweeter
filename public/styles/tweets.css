@@ -109,12 +109,26 @@ error-message i {
 }
 
 .error-message h1 {
+  display: inline-block;
   color: red;
   font-size: 32px;
+  margin-bottom: 0px;
 }
 
 .error-message p {
+  display: inline-block;
   color: red;
   font-weight: 700;
   font-size: 20px;
+}
+
+.error-message-remove {
+  margin-bottom: 5px;
+  padding: 10px;
+}
+
+.error-message-remove:hover {
+  color: #FFF;
+  background: red;
+  transition: 500ms ease-in-out;
 }

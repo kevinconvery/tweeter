@@ -1,11 +1,11 @@
-// Calculating just 
-const calculateDays = function(date) {
+// Creates the date string for the bottom-left div in each tweet
+const renderDateString = function(date) {
   const timeDifference = Date.now() - date;
-  const formattedDate = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-  if (formattedDate === 0) {
+  const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  if (daysDifference === 0) {
     return `Today`;
-  } else {
-    return `${formattedDate} days ago`;
+  } else if (daysDifference ) {
+    return `${daysDifference} days ago`;
   }
 }
 
@@ -26,7 +26,7 @@ const createTweetElement = function(tweetElement) {
             </div>
             <div class="bottom-row">
               <div class="bottom-left">
-                <span class="tweet-age">${calculateDays(tweetElement.created_at)}</span>
+                <span class="tweet-age">${renderDateString(tweetElement.created_at)}</span>
               </div>
               <div class="bottom-right">
                 <i class="fa fa-flag"></i>
@@ -60,10 +60,10 @@ $(document).ready(() => {
         `<div class="error-message">
           <h1>Error</h1>
           <p>Tweets cannot be empty</p>
-          <button class="error-kill-button">Kill Me</button>
+          <div class="error-message-remove">Remove Message</div>
          </div>`;
       $('.container').prepend(errorHTML);
-      $('.error-kill-button').click(function(event) {
+      $('.error-message-remove').click(function(event) {
         $('div').remove('.error-message');
       });
     } else if ($('#tweet-text').val().length > 140) {
@@ -71,9 +71,10 @@ $(document).ready(() => {
         `<div class="error-message">
           <h1>Error</h1>
           <p>Tweets are limited to a length of 140 characters.</p>
+          <div class="error-message-remove">Remove Message</div>
          </div>`;
       $('.container').prepend(errorHTML);
-      $('.error-kill-button').click(function(event) {
+      $('.error-message-remove').click(function(event) {
         $('div').remove('.error-message');
       });
     } else {
@@ -91,9 +92,10 @@ $(document).ready(() => {
   // hide the new tweet form by default
   $('.new-tweet').slideUp();
 
-  // this will toggle the state
+  // this will toggle the state, then give the text area the focus
   $('#compose-tweet').click(function(event) {
     $('.new-tweet').slideToggle();
+    $('#tweet-text').focus();
   });
   
   const loadTweets = () => {
