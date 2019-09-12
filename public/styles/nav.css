@@ -60,3 +60,15 @@ nav #tweet {
 #bolded {
   font-weight: 700;
 }
+
+@media (max-width: 600px) {
+  nav #brand, nav #tweet {
+    font-size: 0.9em;
+    padding: 2em;
+  }
+
+  #nav-right .fa {
+    bottom: 2em;
+    left: 4.5em;
+  }
+}

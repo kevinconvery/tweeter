@@ -95,19 +95,16 @@ article.tweet:hover {
   justify-content: center;
   align-items: center;
   width: 100%;
+  color: red;
   border: 3px solid red;
 }
 
 .error-message h1 {
-  display: inline-block;
-  color: red;
   font-size: 32px;
   margin-bottom: 0px;
 }
 
 .error-message p {
-  display: inline-block;
-  color: red;
   font-weight: 700;
   font-size: 20px;
 }
