@@ -1,16 +1,36 @@
+// Determines the direction of the scroll, used in the scroll event.
+// This prevents a triggering of the scroll event from the scroll-up
+// button since we're only really listening on down direction scrolls.
+const determineScrollDirection = function() {
+  const top = 0;
+  const position = window.pageYOffset;
+  if (position > top) {
+    return 'down';
+  } else {
+    return 'up';
+  }
+}
+
 // Creates the date string for the bottom-left div in each tweet
+// Could do a lot more than just calculating the days -- this would
+// be extended with successive modulo calls and finding a smaller
+// and smaller remainder.
 const renderDateString = function(date) {
   const timeDifference = Date.now() - date;
+  // 1000 milliseconds in a second, 60 seconds in a minute, 60 minutes in an hour, 24 hours in a day
   const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
   if (daysDifference === 0) {
     return `Today`;
-  } else if (daysDifference ) {
+  } else if (daysDifference === 1) {
+    return `Yesterday`;
+  } else {
     return `${daysDifference} days ago`;
   }
 }
 
+// Creates the tweet as HTML to be appended. This is done through a template
+// string which makes returning the string a lot cleaner.
 const createTweetElement = function(tweetElement) {
-  // Returning a large template string is a lot cleaner.
   return `<article class="tweet">
             <div class="top-row">
               <div class="top-left">
@@ -37,14 +57,15 @@ const createTweetElement = function(tweetElement) {
           </article>`;
 }
 
-const appendTweet = function(tweet) {
-  $('#tweets-container').append(createTweetElement(tweet));
+// Adds an individual tweet.
+const addTweet = function(tweet) {
+  $('#tweets-container').prepend(createTweetElement(tweet));
 }
 
+// Adds a collection of tweets from a source.
 const renderTweets = function(tweets) {
   for (tweet of tweets) {
-    // append returned HTML string:
-    appendTweet(tweet);
+    addTweet(tweet);
   }
 }
 
@@ -55,7 +76,7 @@ $(document).ready(() => {
     event.preventDefault();
     // prevent default handling (in this case, the refresh of the page)
     if ($('#tweet-text').val() === "") {
-      // create the error 
+      // create the error HTML
       const errorHTML = 
         `<div class="error-message">
           <h1>Error</h1>
@@ -63,7 +84,8 @@ $(document).ready(() => {
           <div class="error-message-remove">Remove Message</div>
          </div>`;
       $('.container').prepend(errorHTML);
-      $('.error-message-remove').click(function(event) {
+      // create the listener for the error message
+      $('.error-message-remove').click(function() {
         $('div').remove('.error-message');
       });
     } else if ($('#tweet-text').val().length > 140) {
@@ -74,7 +96,7 @@ $(document).ready(() => {
           <div class="error-message-remove">Remove Message</div>
          </div>`;
       $('.container').prepend(errorHTML);
-      $('.error-message-remove').click(function(event) {
+      $('.error-message-remove').click(function() {
         $('div').remove('.error-message');
       });
     } else {
@@ -83,22 +105,42 @@ $(document).ready(() => {
         method: 'POST',
         data: $(this).serialize()
       }).then(function(response) {
+        // reset our tweet text and counter
         $('#tweet-text').val('');
         $('.counter').text('140');
-        appendTweet(response);
+        addTweet(response);
       });
     }
   });
-  // hide the new tweet form by default
-  $('.new-tweet').slideUp();
 
   // this will toggle the state, then give the text area the focus
-  $('#compose-tweet').click(function(event) {
+  $('#compose-tweet').click(function() {
     $('.new-tweet').slideToggle();
     $('#tweet-text').focus();
   });
   
-  const loadTweets = () => {
+  // working here on the scroll event
+  $(window).scroll(function(event) {
+    // only fade the scroll-up button on down direction triggers
+    if (determineScrollDirection() === 'down') {
+      $('.scroll-up').fadeIn(800);
+    }
+  });
+
+  
+  $('.scroll-up').click(function(event) {
+    // scroll to the top and fade out our button
+    $('html').scrollTop(0);
+    $('.scroll-up').fadeOut(400);
+    // rather than a slideToggle call this should always be down
+    // so slideDown is used.
+    $('.new-tweet').slideDown();
+    // give the tweet-text component focus
+    $('#tweet-text').focus();
+  });
+
+  // ensure that our DOM is ready before doing this:
+  const loadTweets = function() {
     $.ajax({
       url: '/tweets',
       method: 'GET'
@@ -107,5 +149,15 @@ $(document).ready(() => {
     });
   }
   
-  loadTweets();
+  const loadPage = function() {
+    // hide the new tweet form by default
+    $('.new-tweet').slideUp();
+    // hide the scroll-up button
+    $('.scroll-up').fadeOut(0);
+    // load our tweets here
+    loadTweets();
+  }
+
+  // load the page
+  loadPage();
 });
