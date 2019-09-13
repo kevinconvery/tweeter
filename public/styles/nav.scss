@@ -1,0 +1,71 @@
+body {
+  margin: 0;
+}
+
+nav {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  top: 0;
+  left: 0;
+  height: 120px;
+  width: 100%;
+  z-index: 2;
+  background-color: #4056A1;
+  color: #FFF;
+  #brand {
+    font-family: 'Bungee', cursive;
+    font-size: 1.2em;
+    padding: 1.5em;
+  }
+
+  #tweet {
+    font-size: 1.2em;
+    padding: 1.5em;
+  }
+}
+
+#nav-left, #nav-right {
+  display: flex;
+}
+
+#nav-right {
+  flex-direction: column;
+  .fa {
+    z-index: 3;
+    color: black;
+    height: 20px;
+    width: 20px;
+    justify-content: center;
+    position: relative;
+    bottom: 45px;
+    left: 125px;
+    color: #ebc015;
+    /* for the transition when the cursor moves off the element */
+    /* smaller since we want a bit faster shrinking back to normal */
+    transition: 200ms ease-in-out;
+  }
+
+  .fa:hover {
+    transform: scale(1.2);
+    /* slowly ease in */
+    transition: 500ms ease-in-out;
+    color: #eb9c15;
+  }
+}
+
+#bolded {
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  nav #brand, nav #tweet {
+    font-size: 0.9em;
+    padding: 2em;
+  }
+
+  #nav-right .fa {
+    bottom: 2em;
+    left: 4.5em;
+  }
+}

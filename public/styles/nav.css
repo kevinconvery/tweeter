@@ -14,27 +14,23 @@ nav {
   background-color: #4056A1;
   color: #FFF;
 }
-
 nav #brand {
-  font-family: 'Bungee', cursive;
+  font-family: "Bungee", cursive;
   font-size: 1.2em;
   padding: 1.5em;
 }
-
 nav #tweet {
   font-size: 1.2em;
   padding: 1.5em;
 }
 
-#nav-left {
+#nav-left, #nav-right {
   display: flex;
 }
 
 #nav-right {
-  display: flex;
   flex-direction: column;
 }
-
 #nav-right .fa {
   z-index: 3;
   color: black;
@@ -49,7 +45,6 @@ nav #tweet {
   /* smaller since we want a bit faster shrinking back to normal */
   transition: 200ms ease-in-out;
 }
-
 #nav-right .fa:hover {
   transform: scale(1.2);
   /* slowly ease in */
@@ -72,3 +67,5 @@ nav #tweet {
     left: 4.5em;
   }
 }
+
+/*# sourceMappingURL=nav2.css.map */

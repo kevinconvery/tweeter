@@ -72,10 +72,14 @@ article.tweet:hover {
   border-radius: 25px;
 }
 
-.scroll-up i {
+@mixin scroll-up-position {
   position: relative;
   left: 17px;
   top: 10px;
+}
+
+.scroll-up i {
+  @include scroll-up-position;
   width: 50px;
   height: 50px;
   color: #FFF;
@@ -120,4 +124,4 @@ article.tweet:hover {
   transition: 500ms ease-in-out;
 }
 
-/*# sourceMappingURL=tweets.css.map */
+
