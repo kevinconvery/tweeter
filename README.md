@@ -47,4 +47,4 @@ new tweets to the page, with jQuery for our DOM manipulation.
 
 ## Questions or Comments?
 
-Email me [here](kevinconvery@gmail.com)
+Email me [here](mailto:kevinconvery@gmail.com)
