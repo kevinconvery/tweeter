@@ -1,10 +1,13 @@
+const KEYBOARD_EVENT = 8
+const CHARACTER_LIMIT = 140
+
 $(document).ready(function() {
   $('#tweet-text').keydown(function(event) {
     let counter = parseInt($('.counter').text());
     // backspace has been pressed
-    if (event.which === 8) {
+    if (event.which === KEYBOARD_EVENT) {
       // don't increment it when it's 140 or over
-      if (counter < 140) {
+      if (counter < CHARACTER_LIMIT) {
         counter++;
         $('.counter').text(counter);
       }

@@ -1,52 +1,48 @@
 // Determines the direction of the scroll, used in the scroll event.
 // This prevents a triggering of the scroll event from the scroll-up
 // button since we're only really listening on down direction scrolls.
-const determineScrollDirection = function() {
-  const top = 0;
-  const position = window.pageYOffset;
-  if (position > top) {
-    return 'down';
-  } else {
-    return 'up';
-  }
-}
+const determineScrollDirection = () => (window.pageYOffset > 0 ? 'down' : 'up')
+// 1000 milliseconds in a second, 60 seconds in a minute, 60 minutes in an hour, 24 hours in a day
+const DAY_SIZE = 1000 * 3600 * 24
 
 // Creates the date string for the bottom-left div in each tweet
 // Could do a lot more than just calculating the days -- this would
 // be extended with successive modulo calls and finding a smaller
 // and smaller remainder.
 const renderDateString = function(date) {
-  const timeDifference = Date.now() - date;
-  // 1000 milliseconds in a second, 60 seconds in a minute, 60 minutes in an hour, 24 hours in a day
-  const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-  if (daysDifference === 0) {
-    return `Today`;
-  } else if (daysDifference === 1) {
-    return `Yesterday`;
-  } else {
-    return `${daysDifference} days ago`;
+  const daysDifference = Math.floor((Date.now() - date) / DAY_SIZE);
+  switch(daysDifference) {
+    case 0:
+      return 'Today'
+    case 1:
+      return 'Yesterday'
+    default:
+      return `${daysDifference} days ago`
   }
 }
 
 // Creates the tweet as HTML to be appended. This is done through a template
 // string which makes returning the string a lot cleaner.
 const createTweetElement = function(tweetElement) {
+  const { user, content, created_at } = tweetElement
+  const { handle, avatars, name } = user
+  const { text } = content
   return `<article class="tweet">
             <div class="top-row">
               <div class="top-left">
-                <img src="${tweetElement.user.avatars}" alt="">
-                <span class="display-name">${tweetElement.user.name}</span>
+                <img src="${avatars}" alt="">
+                <span class="display-name">${name}</span>
               </div>
               <div class="top-right">
-                <span class="user-name">${tweetElement.user.handle}</span>
+                <span class="user-name">${handle}</span>
               </div>
             </div>
             <div class="tweet-body">
-              <span class="tweet-text">${tweetElement.content.text}</span>
+              <span class="tweet-text">${text}</span>
             </div>
             <div class="bottom-row">
               <div class="bottom-left">
-                <span class="tweet-age">${renderDateString(tweetElement.created_at)}</span>
+                <span class="tweet-age">${renderDateString(created_at)}</span>
               </div>
               <div class="bottom-right">
                 <i class="fa fa-flag"></i>
@@ -58,12 +54,12 @@ const createTweetElement = function(tweetElement) {
 }
 
 // Adds an individual tweet.
-const addTweet = function(tweet) {
+const addTweet = tweet => {
   $('#tweets-container').prepend(createTweetElement(tweet));
 }
 
 // Adds a collection of tweets from a source.
-const renderTweets = function(tweets) {
+const renderTweets = tweets => {
   for (tweet of tweets) {
     addTweet(tweet);
   }
@@ -72,7 +68,7 @@ const renderTweets = function(tweets) {
 $(document).ready(() => {
   // create-tweet submit event listener
   // adds a new tweet to the tweets.
-  $('#create-tweet').submit(function(event) {
+  $('#create-tweet').submit(event => {
     event.preventDefault();
     // prevent default handling (in this case, the refresh of the page)
     if ($('#tweet-text').val() === "") {
