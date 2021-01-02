@@ -1,15 +1,16 @@
+// determineScrollDirection()
 // Determines the direction of the scroll, used in the scroll event.
 // This prevents a triggering of the scroll event from the scroll-up
 // button since we're only really listening on down direction scrolls.
 const determineScrollDirection = () => (window.pageYOffset > 0 ? 'down' : 'up')
-// 1000 milliseconds in a second, 60 seconds in a minute, 60 minutes in an hour, 24 hours in a day
-const DAY_SIZE = 1000 * 3600 * 24
 
+// renderDateString(date)
 // Creates the date string for the bottom-left div in each tweet
 // Could do a lot more than just calculating the days -- this would
 // be extended with successive modulo calls and finding a smaller
 // and smaller remainder.
-const renderDateString = function(date) {
+const renderDateString = date => {
+  const DAY_SIZE = 1000 * 3600 * 24
   const daysDifference = Math.floor((Date.now() - date) / DAY_SIZE);
   switch(daysDifference) {
     case 0:
@@ -24,6 +25,7 @@ const renderDateString = function(date) {
 // Creates the tweet as HTML to be appended. This is done through a template
 // string which makes returning the string a lot cleaner.
 const createTweetElement = function(tweetElement) {
+  // destructure the individual components in the element
   const { user, content, created_at } = tweetElement
   const { handle, avatars, name } = user
   const { text } = content
