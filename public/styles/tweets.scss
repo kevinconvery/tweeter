@@ -1,12 +1,14 @@
+@import 'globals';
+
 article.tweet {
   display: flex;
   flex-direction: column;
   height: 190px;
   width: 100%;
   font-size: 0.75em;
-  background: #dee0df;
+  background: $very-light-green-gray;
   padding: 1em 1.5em;
-  border: 2px solid black;
+  border: 2px solid $off-black;
   margin-top: 1em;
   margin-bottom: 1em;
 }
@@ -22,13 +24,11 @@ article.tweet .bottom-right:hover {
 }
 
 article.tweet:hover {
-  box-shadow: 5px 5px 2px #9c9a97;
+  box-shadow: 5px 5px 2px $middle-brown-gray;
 }
 
 .top-row, .bottom-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  @include row-display;
 }
 
 .top-row img {
@@ -42,7 +42,7 @@ article.tweet:hover {
 }
 
 .tweet-body {
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid $off-black;
   padding-bottom: 20px;
   width: 100%;
 }
@@ -68,7 +68,7 @@ article.tweet:hover {
   z-index: 2;
   bottom: 50px;
   right: 50px;
-  background-color: #e34810;
+  background-color: $red-orange;
   border-radius: 25px;
 }
 
@@ -94,13 +94,10 @@ article.tweet:hover {
 
 .error-message {
   margin-top: 1em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @include flex-centre-display;
   width: 100%;
-  color: red;
-  border: 3px solid red;
+  color: $error-red;
+  border: 3px solid $error-red;
 }
 
 .error-message h1 {
@@ -120,7 +117,7 @@ article.tweet:hover {
 
 .error-message-remove:hover {
   color: #FFF;
-  background: red;
+  background: $error-red;
   transition: 500ms ease-in-out;
 }
 

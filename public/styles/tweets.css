@@ -1,3 +1,5 @@
+/* global colours */
+/* header-display mixin */
 article.tweet {
   display: flex;
   flex-direction: column;
@@ -6,7 +8,7 @@ article.tweet {
   font-size: 0.75em;
   background: #dee0df;
   padding: 1em 1.5em;
-  border: 2px solid black;
+  border: 2px solid #121212;
   margin-top: 1em;
   margin-bottom: 1em;
 }
@@ -42,7 +44,7 @@ article.tweet:hover {
 }
 
 .tweet-body {
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid #121212;
   padding-bottom: 20px;
   width: 100%;
 }
@@ -95,8 +97,8 @@ article.tweet:hover {
   justify-content: center;
   align-items: center;
   width: 100%;
-  color: red;
-  border: 3px solid red;
+  color: #fa0714;
+  border: 3px solid #fa0714;
 }
 
 .error-message h1 {
@@ -116,7 +118,7 @@ article.tweet:hover {
 
 .error-message-remove:hover {
   color: #FFF;
-  background: red;
+  background: #fa0714;
   transition: 500ms ease-in-out;
 }
 
