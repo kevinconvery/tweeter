@@ -14,11 +14,11 @@
     <link href="https://fonts.googleapis.com/css?family=Bungee|Source+Sans+Pro:300,300i,700,700i&display=swap" rel="stylesheet">
 
     <!-- App CSS -->
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/header.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/css/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/css/nav.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/css/header.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/css/new-tweet.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/css/tweets.css" type="text/css" />
 
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
@@ -31,34 +31,38 @@
       <div id="nav-left">
         <span id="brand">tweeter</span>
       </div>
+      <div id="nav-centre">
+        <span id="profile"><span id="show-profile">Show</span> profile data</span>
+      </div>
       <div id="nav-right">
         <span id="tweet"><span id="compose-tweet">Write</span> a new tweet</span>
       </div>
     </nav>
-    
-    <header>
-      <div id="profile-div">
-        <img id="profile-pic" src="/images/profile_pic.jpg"> 
-        <h2>Kevin Convery</h2>
-      </div>
-    </header>
-    <!-- Page-specific (main) content here -->
-    <main class="container">
-      <!-- section for adding new tweets -->
-      <section class="new-tweet">
-        <form id="create-tweet">
-          <textarea name="text" placeholder="What are you humming about?" id="tweet-text"></textarea>
-          <div id="bottom-line">
-            <input type="submit" value="Tweet">
-            <span class="counter">140</span>
-          </div>
-        </form>
-      </section>
-      <section id="tweets-container"></section>
-      <div class="scroll-up">
-        <i class="fa fa-angle-double-up"></i>
-      </div>
-    </main>
+    <div class="content-wrapper">
+      <header>
+        <div id="profile-div">
+          <img id="profile-pic" src="/images/profile_pic.jpg"> 
+          <h2>Kevin Convery</h2>
+        </div>
+      </header>
+      <!-- Page-specific (main) content here -->
+      <main class="container">
+        <!-- section for adding new tweets -->
+        <section class="new-tweet">
+          <form id="create-tweet">
+            <textarea name="text" placeholder="What are you humming about?" id="tweet-text"></textarea>
+            <div id="bottom-line">
+              <input type="submit" value="Tweet">
+              <span class="counter">140</span>
+            </div>
+          </form>
+        </section>
+        <section id="tweets-container"></section>
+        <div class="scroll-up">
+          <i class="fa fa-angle-double-up"></i>
+        </div>
+      </main>
+    </div>
   </body>
   <!-- App JS - moved to bottom as good practice -->
   <script type="text/javascript" src="scripts/app.js"></script>

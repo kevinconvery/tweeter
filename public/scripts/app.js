@@ -117,6 +117,11 @@ $(document).ready(() => {
     $('#tweet-text').focus();
   });
   
+  // show and hide header from nav as well
+  $('#show-profile').click(() => {
+    $('header').slideToggle()
+  })
+
   // working here on the scroll event
   $(window).scroll(function(event) {
     // only fade the scroll-up button on down direction triggers
