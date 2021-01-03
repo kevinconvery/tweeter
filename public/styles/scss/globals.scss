@@ -1,0 +1,43 @@
+/* global colours */
+$error-red: #fa0714;
+$off-black: #121212;
+$royal-blue: #1331f2;
+$gold: #f2c613;
+$very-light-green-gray: #dee0df;
+$middle-brown-gray: #9c9a97;
+$red-orange: #e34810;
+
+/* header-display mixin */
+@mixin flex-centre-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin row-display {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@mixin nav-display {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  top: 0;
+  left: 0;
+  height: 120px;
+  width: 100%;
+  z-index: 2;
+}
+
+@mixin nav-font-style {
+  font-size: 1.2em;
+  padding: 1.5em;
+}
+
+@mixin nav-highlight {
+  color: $gold;
+  transform: scale(1.2);
+}

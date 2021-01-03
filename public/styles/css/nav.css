@@ -1,0 +1,73 @@
+/* global colours */
+/* header-display mixin */
+body {
+  margin: 0;
+}
+
+nav {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  top: 0;
+  left: 0;
+  height: 120px;
+  width: 100%;
+  z-index: 2;
+  background-color: #1331f2;
+  color: #FFF;
+}
+nav #brand {
+  font-family: "Bungee", cursive;
+  font-size: 1.2em;
+  display: grid;
+  place-items: center;
+  padding: 0 2rem;
+  height: 100%;
+}
+nav #tweet {
+  font-size: 1.2em;
+}
+
+#nav-centre {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  top: 0;
+  left: 0;
+  height: 120px;
+  width: 100%;
+  z-index: 2;
+}
+
+#show-profile {
+  font-weight: 700;
+  transition: all 300ms ease-in-out;
+}
+
+#nav-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  padding: 0 2rem;
+}
+
+#compose-tweet {
+  font-weight: 700;
+  transition: all 300ms ease-in-out;
+}
+
+#compose-tweet:hover {
+  color: #f2c613;
+  transform: scale(1.2);
+}
+
+@media (max-width: 600px) {
+  nav #brand, nav #tweet {
+    font-size: 0.9em;
+    padding: 2em;
+  }
+}
+
+/*# sourceMappingURL=nav.css.map */

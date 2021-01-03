@@ -1,0 +1,23 @@
+/* global colours */
+/* header-display mixin */
+header {
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #f2c613;
+  background-image: url(../images/argyle.png);
+}
+
+#profile-pic {
+  height: 225px;
+}
+
+#profile-div {
+  padding: 1.5em;
+  text-align: center;
+}
+
+/*# sourceMappingURL=header.css.map */

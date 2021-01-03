@@ -1,0 +1,19 @@
+@import 'globals';
+
+header {
+  grid-row: 1;
+  @include flex-centre-display;
+  width: 100%;
+  background-color: $gold;
+  background-image: url(../images/argyle.png);
+}
+
+#profile-pic {
+  height: 225px;
+}
+
+#profile-div {
+  padding: 1.5em;
+  text-align: center;
+}
+
