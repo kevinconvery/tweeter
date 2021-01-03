@@ -29,7 +29,7 @@ body {
 
 .content-wrapper {
   display: grid;
-  grid-template-rows: repeat(2, auto);
+  grid-template-rows: repeat(2, auto) 30px 60px;
   margin-top: 120px;
 }
 
