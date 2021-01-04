@@ -22,18 +22,17 @@ $red-orange: #e34810;
 }
 
 @mixin nav-display {
-  position: fixed;
   display: flex;
-  justify-content: space-between;
-  top: 0;
-  left: 0;
-  height: 120px;
-  width: 100%;
-  z-index: 2;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin font-size {
+  font-size: 1.2em;
 }
 
 @mixin nav-font-style {
-  font-size: 1.2em;
+  @include font-size;
   padding: 1.5em;
 }
 

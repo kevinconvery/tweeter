@@ -33,6 +33,10 @@ article.tweet:hover {
   justify-content: space-between;
 }
 
+.top-row {
+  margin-bottom: 25px;
+}
+
 .top-row img {
   height: 50px;
   width: 50px;
@@ -45,7 +49,7 @@ article.tweet:hover {
 
 .tweet-body {
   border-bottom: 3px solid #121212;
-  padding-bottom: 20px;
+  padding-bottom: 5px;
   width: 100%;
 }
 
@@ -69,7 +73,7 @@ article.tweet:hover {
   height: 50px;
   z-index: 2;
   bottom: 50px;
-  right: 50px;
+  right: 20px;
   background-color: #e34810;
   border-radius: 25px;
 }

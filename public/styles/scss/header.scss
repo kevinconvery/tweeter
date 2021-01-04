@@ -5,7 +5,7 @@ header {
   @include flex-centre-display;
   width: 100%;
   background-color: $gold;
-  background-image: url(../images/argyle.png);
+  background-image: url(../../images/argyle.png);
 }
 
 #profile-pic {
@@ -15,5 +15,13 @@ header {
 #profile-div {
   padding: 1.5em;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.name-caption {
+  font-weight: 700;
+  padding-top: 1rem;
+  font-size: 1.2em;
 }
 
