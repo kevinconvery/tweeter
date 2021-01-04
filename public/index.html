@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="/styles/css/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/css/new-tweet.css" type="text/css" />
     <link rel="stylesheet" href="/styles/css/tweets.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/css/footer.css" type="text/css" />
 
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
@@ -28,21 +29,22 @@
   <body>
     <!-- Top nav bar (fixed) -->
     <nav id="outer-nav">
-      <div id="nav-left">
+      <div class="nav-item">
         <span id="brand">tweeter</span>
       </div>
-      <div id="nav-centre">
-        <span id="profile"><span id="show-profile">Show</span> profile data</span>
+      <div class="nav-item">
+        <span id="profile"><span id="show-profile">Toggle</span> profile data</span>
       </div>
-      <div id="nav-right">
+      <div class="nav-item">
         <span id="tweet"><span id="compose-tweet">Write</span> a new tweet</span>
       </div>
     </nav>
+    <!-- Content wrapper added to implement grid -->
     <div class="content-wrapper">
       <header>
         <div id="profile-div">
-          <img id="profile-pic" src="/images/profile_pic.jpg"> 
-          <h2>Kevin Convery</h2>
+          <img id="profile-pic" src="/images/profile-pic-pencil.jpg"> 
+          <span class="name-caption">Kevin Convery</span>
         </div>
       </header>
       <!-- Page-specific (main) content here -->
@@ -63,6 +65,9 @@
         </div>
       </main>
     </div>
+    <footer>
+      <span class="footer-credits">Built by <a href="http://www.kevinconvery.ca" class="footer-link">Kevin Convery</a></span>
+    </footer>
   </body>
   <!-- App JS - moved to bottom as good practice -->
   <script type="text/javascript" src="scripts/app.js"></script>
