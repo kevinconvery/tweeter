@@ -1,0 +1,28 @@
+/* global colours */
+/* header-display mixin */
+footer {
+  z-index: 2;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 0.5rem 1.5rem;
+  background: #1331f2;
+  color: white;
+}
+
+.footer-link {
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 300ms ease-in-out;
+  color: white;
+}
+
+.footer-link:hover {
+  color: #f2c613;
+}
+
+/*# sourceMappingURL=footer.css.map */
