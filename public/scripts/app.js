@@ -101,7 +101,7 @@ $(document).ready(() => {
       $.ajax({
         url: '/tweets',
         method: 'POST',
-        data: $(this).serialize()
+        data: $('#tweet-text').serialize()
       }).then(function(response) {
         // reset our tweet text and counter
         $('#tweet-text').val('');
@@ -122,7 +122,6 @@ $(document).ready(() => {
     $('header').slideToggle()
   })
 
-  // working here on the scroll event
   $(window).scroll(function(event) {
     // only fade the scroll-up button on down direction triggers
     if (determineScrollDirection() === 'down') {
@@ -153,7 +152,8 @@ $(document).ready(() => {
   }
   
   const loadPage = function() {
-    // hide the new tweet form by default
+    // hide the profile section and new tweet forms by default
+    $('header').slideUp();
     $('.new-tweet').slideUp();
     // hide the scroll-up button
     $('.scroll-up').fadeOut(0);
